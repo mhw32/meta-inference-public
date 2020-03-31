@@ -20,7 +20,7 @@ down an inclined plane as a function of mu (up to measurement error).
 import os
 import sys
 import math
-import cPickle
+import pickle
 import numpy as np
 from itertools import product
 from sklearn.metrics import mean_squared_error
