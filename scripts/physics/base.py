@@ -36,7 +36,7 @@ class InferenceNetwork(nn.Module):
 
 def sample_minibatch(dataset, batch_size, sample_size):
     minibatch_x, minibatch_z = [], []
-    for i in xrange(batch_size):
+    for i in range(batch_size):
         items_x, items_z = [], []
         indexes = np.random.choice( np.arange(len(dataset)), 
                                     replace=False, size=sample_size)
@@ -259,7 +259,7 @@ if __name__ == "__main__":
         return error
 
     results = []
-    for i in xrange(n_planes):
+    for i in range(n_planes):
         print('Testing simualtion {}/{}'.format(i+1, n_planes))
         test_loader = test_loaders[i]
         error_i = inference_error(test_loader)

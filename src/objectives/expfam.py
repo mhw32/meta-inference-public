@@ -9,9 +9,9 @@ def log_gaussian_marginal_estimate(x_examples, x_mu_list, x_logvar_list, z_list,
     n_examples = len(x_examples)
 
     log_w = []
-    for i in xrange(n_samples):
+    for i in range(n_samples):
         log_p_x_given_z_i = 0
-        for j in xrange(n_examples):
+        for j in range(n_examples):
             log_p_x_given_z_ij = gaussian_log_pdf(x_examples[j], x_mu_list[i], x_logvar_list[i])
             log_p_x_given_z_i += log_p_x_given_z_ij
         log_p_x_given_z_i /= float(n_examples)
@@ -33,9 +33,9 @@ def log_lognormal_marginal_estimate(x_examples, x_mu_list, x_logvar_list, z_list
     n_examples = len(x_examples)
 
     log_w = []
-    for i in xrange(n_samples):
+    for i in range(n_samples):
         log_p_x_given_z_i = 0
-        for j in xrange(n_examples):
+        for j in range(n_examples):
             log_p_x_given_z_ij = lognormal_log_pdf(x_examples[j], x_mu_list[i], x_logvar_list[i])
             log_p_x_given_z_i += log_p_x_given_z_ij
         log_p_x_given_z_i /= float(n_examples)
@@ -57,9 +57,9 @@ def log_exponential_marginal_estimate(x_examples, x_log_rate_list, z_list, z_mu,
     n_examples = len(x_examples)
 
     log_w = []
-    for i in xrange(n_samples):
+    for i in range(n_samples):
         log_p_x_given_z_i = 0
-        for j in xrange(n_examples):
+        for j in range(n_examples):
             log_p_x_given_z_ij = exponential_log_pdf(x_examples[j], x_log_rate_list[i])
             log_p_x_given_z_i += log_p_x_given_z_ij
         log_p_x_given_z_i /= float(n_examples)
@@ -86,7 +86,7 @@ def gaussian_elbo_loss(x_list, x_mu, x_logvar, z, z_mu, z_logvar):
     """
     n = len(x_list)
     log_p_x_given_z = 0
-    for i in xrange(n):
+    for i in range(n):
         log_p_x_given_z_i = -gaussian_log_pdf(x_list[i], x_mu, x_logvar)
         log_p_x_given_z += log_p_x_given_z_i
     log_p_x_given_z /= float(n)
@@ -108,7 +108,7 @@ def lognormal_elbo_loss(x_list, x_mu, x_logvar, z, z_mu, z_logvar):
     """
     n = len(x_list)
     log_p_x_given_z = 0
-    for i in xrange(n):
+    for i in range(n):
         log_p_x_given_z_i = -lognormal_log_pdf(x_list[i], x_mu, x_logvar)
         log_p_x_given_z += log_p_x_given_z_i
     log_p_x_given_z /= float(n)
@@ -130,7 +130,7 @@ def exponential_elbo_loss(x_list, x_log_rate, z, z_mu, z_logvar):
     """
     n = len(x_list)
     log_p_x_given_z = 0
-    for i in xrange(n):
+    for i in range(n):
         log_p_x_given_z_i = -exponential_log_pdf(x_list[i], x_log_rate)
         log_p_x_given_z += log_p_x_given_z_i
     # HACK: important to comment this out -->  log_p_x_given_z /= float(n)

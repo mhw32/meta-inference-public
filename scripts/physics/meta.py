@@ -61,7 +61,7 @@ class InferenceNetwork(nn.Module):
 
 def sample_minibatch(dataset, batch_size, sample_size):
     minibatch_x, minibatch_z = [], []
-    for i in xrange(batch_size):
+    for i in range(batch_size):
         items_x, items_z = [], []
         indexes = np.random.choice( np.arange(len(dataset)), 
                                     replace=False, size=sample_size)
@@ -164,6 +164,7 @@ if __name__ == "__main__":
     train_datasets, val_datasets = [], []
 
     for plane in planes:
+        print(f'Simulating training data (length={plane[0]}, degree={plane[1]})')
         train_mu, train_obs = simulate(1000, plane[0], plane[1])
         val_mu, val_obs = simulate(1000, plane[0], plane[1])
         train_dataset = data.TensorDataset(train_obs, train_mu)
@@ -191,7 +192,7 @@ if __name__ == "__main__":
             batch_size = len(x_list[0])
 
             loss = 0
-            for i in xrange(n_planes):
+            for i in range(n_planes):
                 x_i = x_list[i]
                 x_i = x_i.to(device)
 
@@ -223,10 +224,10 @@ if __name__ == "__main__":
 
     def val(epoch):
         model.eval()
-        loss_meters = [AverageMeter() for _ in xrange(n_planes)]
+        loss_meters = [AverageMeter() for _ in range(n_planes)]
 
         with torch.no_grad():
-            for i in xrange(args.n_train_models):
+            for i in range(args.n_train_models):
                 val_loader = val_loaders[i]
 
                 for x_i, _ in val_loader:
@@ -282,6 +283,7 @@ if __name__ == "__main__":
     # inference out of the box (no learning)
     test_datasets = []
     for plane in planes:
+        print(f'Simulating testing data (length={plane[0]}, degree={plane[1]})')
         mu, obs = simulate(1000, plane[0], plane[1])
         test_dataset = data.TensorDataset(obs, mu)
         test_datasets.append(test_dataset)
@@ -325,7 +327,8 @@ if __name__ == "__main__":
         return error
 
     results = []
-    for i in xrange(n_planes):
+    for i in range(n_planes):
+        print(f'Computing inference error for plane {i+1}/{n_planes}')
         test_loader = test_loaders[i]
         error_i = inference_error(test_loader)
         plane_length_i = plane_lengths[i]

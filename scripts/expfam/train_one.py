@@ -12,7 +12,7 @@ import torch.nn as nn
 from torch import optim
 import torch.nn.functional as F
 
-from src.datasets.utils import BagOfDatasets
+from src.datasets.utils import BagOfDatasetsExpFam as BagOfDatasets
 from src.utils import (
     AverageMeter, 
     save_checkpoint,
@@ -260,7 +260,7 @@ if __name__ == "__main__":
             meta_dataset_i = meta_datasets[i]
             meta_x_mlp_i = meta_dataset_i[-1]    # shape: (batch_size, n_meta_samples, 2)
             meta_x_rnn_i = meta_dataset_i[:-1]  # shape: (n_meta_datasets, batch_size, n_meta_samples, 2)
-            meta_x_rnn_i = [meta_x_rnn_i[j] for j in xrange(args.n_meta_datasets)]  # make to list
+            meta_x_rnn_i = [meta_x_rnn_i[j] for j in range(args.n_meta_datasets)]  # make to list
 
             meta_x_mlp_i = meta_x_mlp_i.to(device)
             meta_x_rnn_i = [meta_x.to(device) for meta_x in meta_x_rnn_i]
@@ -289,15 +289,15 @@ if __name__ == "__main__":
         log_marginals = np.zeros(args.n_datasets)
         
         with torch.no_grad():
-            for _ in xrange(repetitions):  # do this for ten times!
+            for _ in range(repetitions):  # do this for ten times!
                 meta_datasets = test_bag.sample_meta_datasets(
                     args.n_meta_datasets + 1, args.batch_size, args.n_meta_samples)
 
-                for i in xrange(args.n_datasets):
+                for i in range(args.n_datasets):
                     meta_dataset_i = meta_datasets[i]
                     meta_x_mlp_i = meta_dataset_i[-1]    # shape: (batch_size, n_meta_samples, 2)
                     meta_x_rnn_i = meta_dataset_i[:-1]  # shape: (n_meta_datasets, batch_size, n_meta_samples, 2)
-                    meta_x_rnn_i = [meta_x_rnn_i[j] for j in xrange(args.n_meta_datasets)]  # make to list
+                    meta_x_rnn_i = [meta_x_rnn_i[j] for j in range(args.n_meta_datasets)]  # make to list
 
                     meta_x_mlp_i = meta_x_mlp_i.to(device)
                     meta_x_rnn_i = [meta_x.to(device) for meta_x in meta_x_rnn_i]

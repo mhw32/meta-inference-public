@@ -50,15 +50,15 @@ class AmortizedDVAE(nn.Module):
                                        hidden_dim=self.hidden_dim)
         self.decoders = [] 
         self.decoder_dists =[]
-        for i in xrange(n_gaussian_datasets):
+        for i in range(n_gaussian_datasets):
             decoder_i = Toy_FixedVarianceGaussianDecoder(x_stdev=STDEV)
             self.decoders.append(decoder_i)
             self.decoder_dists.append('gaussian')
-        for i in xrange(n_lognormal_datasets):
+        for i in range(n_lognormal_datasets):
             decoder_i = Toy_FixedVarianceLogNormalDecoder(x_stdev=STDEV)
             self.decoders.append(decoder_i)
             self.decoder_dists.append('lognormal')
-        for i in xrange(n_exponential_datasets):
+        for i in range(n_exponential_datasets):
             decoder_i = Toy_ExponentialDecoder()
             self.decoders.append(decoder_i)
             self.decoder_dists.append('exponential')
@@ -227,7 +227,7 @@ if __name__ == "__main__":
             meta_dataset_i = meta_datasets[i]
             meta_x_mlp_i = meta_dataset_i[-1]    # shape: (batch_size, n_meta_samples, 2)
             meta_x_rnn_i = meta_dataset_i[:-1]  # shape: (n_meta_datasets, batch_size, n_meta_samples, 2)
-            meta_x_rnn_i = [meta_x_rnn_i[j] for j in xrange(args.n_meta_datasets)]  # make to list
+            meta_x_rnn_i = [meta_x_rnn_i[j] for j in range(args.n_meta_datasets)]  # make to list
 
             meta_x_mlp_i = meta_x_mlp_i.to(device)
             meta_x_rnn_i = [meta_x.to(device) for meta_x in meta_x_rnn_i]
@@ -266,16 +266,16 @@ if __name__ == "__main__":
         log_marginals = np.zeros(args.n_datasets)
         
         with torch.no_grad():
-            for _ in xrange(repetitions):  # do this for ten times!
+            for _ in range(repetitions):  # do this for ten times!
                 meta_datasets = test_bag.sample_meta_datasets(
                     args.n_meta_datasets + 1, args.batch_size, args.n_meta_samples)
 
-                for i in xrange(args.n_datasets):
+                for i in range(args.n_datasets):
                     dataset_type = dataset_types[i]
                     meta_dataset_i = meta_datasets[i]
                     meta_x_mlp_i = meta_dataset_i[-1]    # shape: (batch_size, n_meta_samples, 2)
                     meta_x_rnn_i = meta_dataset_i[:-1]  # shape: (n_meta_datasets, batch_size, n_meta_samples, 2)
-                    meta_x_rnn_i = [meta_x_rnn_i[j] for j in xrange(args.n_meta_datasets)]  # make to list
+                    meta_x_rnn_i = [meta_x_rnn_i[j] for j in range(args.n_meta_datasets)]  # make to list
 
                     meta_x_mlp_i = meta_x_mlp_i.to(device)
                     meta_x_rnn_i = [meta_x.to(device) for meta_x in meta_x_rnn_i]
