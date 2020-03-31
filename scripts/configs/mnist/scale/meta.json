@@ -1,0 +1,27 @@
+{
+    "exp_base": "/mnt/fs5/wumike/meta_new/trained_models",
+    "exp_name": "meta_scale",
+    "agent": "MetaAgent",
+    "cuda": true,
+    "gpu_device": 8,
+    "seed": 1337,
+    "data_loader_workers": 4,
+    "data_params": {
+        "data_dir": "/mnt/fs5/wumike/datasets/mnist",
+        "dataset": "scale",
+        "split": "sparse",
+        "image_size": 28,
+        "n_channels": 1
+    },
+    "model_params": {
+        "name": "meta",
+        "n_data_samples": 10,
+        "z_dim": 40
+    },
+    "optim_params": {
+        "batch_size": 100,
+        "lr": 2e-4
+    },
+    "num_epochs": 100,
+    "validate": true
+}

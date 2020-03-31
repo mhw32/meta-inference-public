@@ -1,0 +1,18 @@
+{
+    "exp_base": "/mnt/fs5/wumike/meta_norb/trained_models",
+    "exp_name": "predictor_meta_norb_elevation",
+    "agent": "PredictorAgent",
+    "cuda": true,
+    "gpu_device": 0,
+    "seed": 1337,
+    "data_loader_workers": 0,
+    "data_params": {
+        "data_dir": "/mnt/fs5/wumike/datasets/norb",
+        "dataset": "norb",
+        "concept": "elevation",
+        "split": "disjoint",
+        "image_size": 32,
+        "n_channels": 1
+    },
+    "meta_checkpoint_dir": "/mnt/fs5/wumike/meta_norb/trained_models/experiments/meta_norb_elevation_disjoint/2019-08-30--17_48_34"
+}

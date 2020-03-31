@@ -1,0 +1,28 @@
+{
+    "exp_base": "/mnt/fs5/wumike/meta_norb/trained_models",
+    "exp_name": "meta_norb_azimuth",
+    "agent": "ConvMetaAgent",
+    "cuda": true,
+    "gpu_device": 7,
+    "seed": 1337,
+    "data_loader_workers": 4,
+    "data_params": {
+        "data_dir": "/mnt/fs5/wumike/datasets/norb",
+        "dataset": "norb",
+        "concept": "azimuth",
+        "split": "standard",
+        "image_size": 32,
+        "n_channels": 1
+    },
+    "model_params": {
+        "name": "meta",
+        "n_data_samples": 10,
+        "z_dim": 40
+    },
+    "optim_params": {
+        "batch_size": 32,
+        "lr": 2e-4
+    },
+    "num_epochs": 100,
+    "validate": true
+}

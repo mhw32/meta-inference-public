@@ -1,0 +1,15 @@
+{
+    "exp_base": "/mnt/fs5/wumike/meta_new/trained_models",
+    "exp_name": "predictor_vhe_rotate",
+    "agent": "PredictorAgent",
+    "cuda": true,
+    "gpu_device": 0,
+    "seed": 1337,
+    "data_loader_workers": 1,
+    "data_params": {
+        "data_dir": "/mnt/fs5/wumike/datasets/mnist",
+        "image_size": 28,
+        "n_channels": 1
+    },
+    "meta_checkpoint_dir": "/mnt/fs5/wumike/meta_new/trained_models/experiments/vhe_rotate/2019-08-28--20_29_29" 
+}

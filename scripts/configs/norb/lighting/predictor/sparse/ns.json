@@ -1,0 +1,18 @@
+{
+    "exp_base": "/mnt/fs5/wumike/meta_norb/trained_models",
+    "exp_name": "predictor_ns_norb_lighting",
+    "agent": "PredictorAgent",
+    "cuda": true,
+    "gpu_device": 0,
+    "seed": 1337,
+    "data_loader_workers": 0,
+    "data_params": {
+        "data_dir": "/mnt/fs5/wumike/datasets/norb",
+        "dataset": "norb",
+        "concept": "lighting",
+        "split": "sparse",
+        "image_size": 32,
+        "n_channels": 1
+    },
+    "meta_checkpoint_dir": "/mnt/fs5/wumike/meta_norb/trained_models/experiments/ns_norb_lighting_sparse/2019-08-30--22_22_59"
+}
