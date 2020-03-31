@@ -1,4 +1,4 @@
-# meta-inference-public
+# Meta-Amortized Variational Inference
 A PyTorch implementation of "Meta-Amortized Variational Inference and Learning" (https://arxiv.org/abs/1902.01950)
 
 ## Abstract
@@ -28,6 +28,8 @@ We have three sets of experiments as shown in the main text. Below we provide in
 
 ### Transformation Invariance Experiments
 
+![experiment-invariance](./images/invariance.png)
+
 In `scripts/configs`, we have configuration files for all the experiments used to make Figure 6. To run an experiment testing transformation invariance, try the following:
 ```
 python scripts/run.py ./config/mnist/rotate/meta.json
@@ -44,6 +46,8 @@ Note that you will need to edit these config files to support your file and dire
 
 ### Compiled Inference Experiments
 
+![experiment-physics](./images/physics.png)
+
 To run the physics compiled inference experiments, do
 ```
 python scripts/physics/meta.py 
@@ -56,6 +60,9 @@ Each of these will produce a numpy matrix representing the error that can be vis
 
 
 ### Exponential Family Experiments
+
+![experiment-expfam](./images/expfam.png)
+
 For the exponential family experiments, we include two scripts: one for learning sufficient statistics for a single family (Gaussian only), and one for learning statistics across several families. 
 ```
 python scripts/expfam/train_one.py -h
