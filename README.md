@@ -32,14 +32,14 @@ We have three sets of experiments as shown in the main text. Below we provide in
 
 In `scripts/configs`, we have configuration files for all the experiments used to make Figure 6. To run an experiment testing transformation invariance, try the following:
 ```
-python scripts/run.py ./config/mnist/rotate/meta.json
+python scripts/run.py ./scripts/config/mnist/rotate/meta.json
 ```
 
 Among the config files are other baseline models such as Neural Statistician and Variational Homoencoder. 
 
 After learning a representation, to quantify how good it is, we consider the transfer task of predicting the MNIST digit or NORB class using a linear model on the representations alone. To run these, we include config files named `predictor_*.json`. For instance
 ```
-python scripts/run.py ./config/mnist/rotte/predictor_meta.json
+python scripts/run.py ./scripts/config/mnist/rotte/predictor_meta.json
 ```
 
 Note that you will need to edit these config files to support your file and directory paths.
