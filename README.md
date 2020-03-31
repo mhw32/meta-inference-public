@@ -24,9 +24,40 @@ python preprocess_norb.py
 
 ## Experiment Instructions
 
+We have three sets of experiments as shown in the main text. Below we provide instructions for running each of them.
+
 ### Transformation Invariance Experiments
+
+In `scripts/configs`, we have configuration files for all the experiments used to make Figure 6. To run an experiment testing transformation invariance, try the following:
+```
+python scripts/run.py ./config/mnist/rotate/meta.json
+```
+
+Among the config files are other baseline models such as Neural Statistician and Variational Homoencoder. 
+
+After learning a representation, to quantify how good it is, we consider the transfer task of predicting the MNIST digit or NORB class using a linear model on the representations alone. To run these, we include config files named `predictor_*.json`. For instance
+```
+python scripts/run.py ./config/mnist/rotte/predictor_meta.json
+```
+
+Note that you will need to edit these config files to support your file and directory paths.
 
 ### Compiled Inference Experiments
 
-### Exponential Family Experiments
+To run the physics compiled inference experiments, do
+```
+python scripts/physics/meta.py 
+```
+or to run the VAE baseline, do
+```
+python scripts/physics/base.py 
+```
+Each of these will produce a numpy matrix representing the error that can be visualized as a heatmap as shown in Figure 1.
 
+
+### Exponential Family Experiments
+For the exponential family experiments, we include two scripts: one for learning sufficient statistics for a single family (Gaussian only), and one for learning statistics across several families. 
+```
+python scripts/expfam/train_one.py -h
+```
+Note that these scripts contain lots of command line arguments. 
